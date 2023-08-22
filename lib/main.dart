@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_application/ui/routes/routes.dart';
 
 import 'ui/utils/theme.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: 'assets/.env');
   runApp(const MovieApplication());
 }
 
