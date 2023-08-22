@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_application/ui/components/widgets/list_loader_future_builder.dart';
+import 'package:movie_application/ui/routes/routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,11 +9,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Movies',
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-          ),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         actions: [
           Padding(
@@ -20,28 +19,23 @@ class HomeScreen extends StatelessWidget {
               right: 8.0,
             ),
             child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.search),
+              onPressed: () =>
+                  Navigator.pushNamed(context, AppRouter.searchRoute),
+              icon: const Icon(Icons.search),
             ),
           ),
         ],
       ),
       body: const Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            Text(
-              'Suggested Movies',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 22,
+        padding: EdgeInsets.all(15.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ListLoaderFutureBuilder(
+                page: 2,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ListLoaderFutureBuilder(),
-          ],
+            ],
+          ),
         ),
       ),
     );
