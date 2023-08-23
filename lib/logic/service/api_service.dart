@@ -34,10 +34,7 @@ class APIService {
 
   getMovieDetails(int id) {
     DataModel movieModel = models.firstWhere((element) => element.id == id);
+    print(movieModel.title);
     return movieModel;
-  }
-
-  getSearchedData(){
-    
   }
 }
