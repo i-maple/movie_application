@@ -7,11 +7,15 @@ class DataProvider extends ChangeNotifier {
 
   List<DataModel> get searchedModel => _searchedModel;
 
-  searchAModel(String title) {
-    List<DataModel> searches =  APIService().models.where(
-          (element) => element.title!.contains(title),
-        ).toList();
+  searchAModel(String title) async {
+    List<DataModel> searches = await APIService().getAllMoviesList(2);
 
-    _searchedModel = searches;
+    var src = searches
+        .where(
+          (element) => element.title!.contains(title),
+        )
+        .toList();
+    _searchedModel = src;
+    notifyListeners();
   }
 }

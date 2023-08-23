@@ -40,7 +40,7 @@ class ContainerImageWidget extends StatelessWidget {
             tag: id,
             child: Image.network(
               'https://themoviedb.org/t/p/w600_and_h900_bestv2/$image',
-              fit: BoxFit.contain,
+              fit: BoxFit.fill,
             ),
           ),
         ),

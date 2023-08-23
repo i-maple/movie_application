@@ -19,4 +19,11 @@ class ResponsiveWidget extends StatelessWidget {
       },
     );
   }
+
+  static getSize(BuildContext context){
+    if(MediaQuery.of(context).size.width > 1000){
+      return 'd';
+    }
+    return 'm';
+  }
 }

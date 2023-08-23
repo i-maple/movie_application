@@ -1,42 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:movie_application/logic/provider/data_provider.dart';
-import 'package:movie_application/logic/service/api_service.dart';
 import 'package:movie_application/ui/components/widgets/container_image_widget.dart';
+import 'package:movie_application/ui/responsive/responsive_widget.dart';
 import 'package:provider/provider.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
 
   @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    var prov = Provider.of<DataProvider>(context, listen: false);
+    var prov = Provider.of<DataProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.symmetric(vertical: 15.0),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15.0),
           child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Search Something',
-              // filled: true,
-              suffixIcon: Icon(Icons.search)
-            ),
+            controller: _controller,
+            decoration: const InputDecoration(
+                hintText: 'Search Something',
+                // filled: true,
+                suffixIcon: Icon(Icons.search)),
+            onChanged: (value) async =>
+                await prov.searchAModel(_controller.text),
           ),
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: GridView.builder(
-                itemCount: 30,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemBuilder: (context, index) {},
-              ),
-            ),
-          ],
-        ),
-      ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GridView.builder(
+                itemCount: prov.searchedModel.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:
+                      ResponsiveWidget.getSize(context) == 'd' ? 5 : 2,
+                      crossAxisSpacing: 20,
+                      mainAxisExtent: 250,
+                ),
+                itemBuilder: (context, index) {
+                  var data = prov.searchedModel[index];
+                  return SizedBox(
+                    height: 300,
+                    child: ContainerImageWidget(
+                      image: data.image!,
+                      title: data.title!,
+                      releaseDate: data.releaseDate!,
+                      genre: data.releaseDate!,
+                      id: data.id!,
+                    ),
+                  );
+                }),
+          )),
     );
   }
 }
