@@ -33,7 +33,7 @@ class APIService {
   }
 
   getMovieDetails(int id) {
-    DataModel movieModel = _models.singleWhere((element) {
+    DataModel movieModel = _models.firstWhere((element) {
       return element.id==id;
     });
     return movieModel;

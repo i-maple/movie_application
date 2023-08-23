@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:movie_application/ui/routes/routes.dart';
+import 'package:movie_application/ui/screens/movie_detail_screen.dart';
 
 class ContainerImageWidget extends StatelessWidget {
-  const ContainerImageWidget({
-    super.key,
-    required this.image,
-    this.rating,
-    required this.title,
-    required this.releaseDate,
-    required this.genre,
-    required this.id,
-    this.height
-  });
+  const ContainerImageWidget(
+      {super.key,
+      required this.image,
+      this.rating,
+      required this.title,
+      required this.releaseDate,
+      required this.genre,
+      required this.id,
+      this.height});
 
   final int id;
   final String image;
@@ -25,14 +24,17 @@ class ContainerImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
+        Navigator.push(
           context,
-          AppRouter.movieDetailRoute,
-          arguments: id,
+          MaterialPageRoute(
+            builder: (_) => MovieDetailScreen(
+              id: id,
+            ),
+          ),
         );
       },
       child: Container(
-        height: height?? 300,
+        height: height ?? 300,
         margin: const EdgeInsets.only(bottom: 20),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
