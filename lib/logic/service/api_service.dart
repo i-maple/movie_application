@@ -9,7 +9,7 @@ class APIService {
   static String discoverMovie = '/3/discover/movie/?';
   static String pageOfResponse = '&page=';
 
-  List<DataModel> models = [];
+  static final List<DataModel> _models = [];
 
   Future<http.Response> initialize(int page) async {
     return await http.get(
@@ -26,15 +26,16 @@ class APIService {
       http.Response res = await initialize(i);
       Map moviesMapsList = jsonDecode(res.body);
       for (Map maps in moviesMapsList['results']) {
-        models.add(DataModel.fromJson(maps));
+        _models.add(DataModel.fromJson(maps));
       }
     }
-    return models;
+    return _models;
   }
 
   getMovieDetails(int id) {
-    DataModel movieModel = models.firstWhere((element) => element.id == id);
-    print(movieModel.title);
+    DataModel movieModel = _models.singleWhere((element) {
+      return element.id==id;
+    });
     return movieModel;
   }
 }
