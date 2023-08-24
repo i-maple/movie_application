@@ -19,3 +19,13 @@ After you clone the project to your device, you can run the following command to
 flutter pub get
 ```
 
+Then you must add API KEY and Bearer Token in the environment variable file. 
+To achieve this, create a file named  `.env` under assets folder
+
+Then obtain API Keys and Bearer Token from [this link](https://developer.imdb.com/) and add credientials to the file in the following format : 
+
+```
+    - API_KEY=<your_API_KEY>
+    - BEARER=<your_BEARER_TOKEN>
+```
+Replace the placeholder <your_API_KEY> and <your_BEARER_TOKEN> with your credientials
