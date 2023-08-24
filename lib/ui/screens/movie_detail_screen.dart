@@ -81,7 +81,7 @@ class MovieDetailScreen extends StatelessWidget {
                             _dataModel.overview!,
                             style: const TextStyle(fontSize: 18),
                           ),
-                        ))
+                        ),),
                       ],
                     ),
                   ),
