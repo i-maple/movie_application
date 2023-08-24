@@ -29,3 +29,5 @@ Then obtain API Keys and Bearer Token from [this link](https://developer.imdb.co
     - BEARER=<your_BEARER_TOKEN>
 ```
 Replace the placeholder <your_API_KEY> and <your_BEARER_TOKEN> with your credientials
+
+- Feel Free to fork this project and use it as per your requirements.
