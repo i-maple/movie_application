@@ -1,16 +1,21 @@
-# movie_application
+# Movie Application
 
-A new Flutter project.
+A responsive movie application which uses IMDB Movies API to fetch datas and implements using http flutter package and Provider State Management
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Before getting started, make sure that you have Flutter installed on your pc. 
+If not, you can follow [these steps to install flutter](https://docs.flutter.dev/get-started/install).
 
-A few resources to get you started if this is your first Flutter project:
+To get Started, you need to clone this repository to your local device by running the following command in your terminal
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+git clone https://github.com/i-maple/movie_application.git
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+After you clone the project to your device, you can run the following command to get dependencies so that app can start running
+
+```
+flutter pub get
+```
+
